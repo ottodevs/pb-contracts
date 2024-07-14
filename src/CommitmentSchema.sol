@@ -40,6 +40,13 @@ contract CommitmentSchema {
         projectBetters[_projectId].push(_better);
     }
 
+    function getRevealedBet(
+        address _better
+    ) external view returns (uint256, uint256, bool) {
+        Commitment memory commitment = commitments[_better];
+        return (commitment.projectId, commitment.amount, commitment.revealed);
+    }
+
     function getWinners(
         uint256 _winningProjectId
     ) external view returns (address[] memory) {

@@ -5,20 +5,16 @@ import "./PredictionBattle.sol";
 
 contract MarketDeployer {
     function deployPredictionBattle(
-        address _nounsToken,
-        address _apeCoinToken,
-        address _reputationToken,
+        address _bettingToken,
+        address _soulboundReputation,
         address _commitmentSchema,
-        uint256 _wageDeadline,
-        uint256 _resolutionDate
+        address _fundingPool
     ) external returns (address) {
         PredictionBattle newMarket = new PredictionBattle(
-            _nounsToken,
-            _apeCoinToken,
-            _reputationToken,
-            _commitmentSchema,
-            _wageDeadline,
-            _resolutionDate
+            address(_bettingToken),
+            address(_soulboundReputation),
+            address(_commitmentSchema),
+            address(_fundingPool)
         );
         return address(newMarket);
     }
